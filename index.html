@@ -418,47 +418,31 @@
 
 
 <!-- SIGNUP -->
-<div class="wrap sec signup-center" id="signup">
-  <div class="sec-label center reveal"><span class="ll"></span>Reserve Your Spot<span class="rl"></span></div>
-  <h2 class="sec-title center reveal d1">First 100 beta testers.</h2>
-  <div class="orn-hr reveal d2"><div class="l"></div><div class="g">✦ ✦ ✦</div><div class="l"></div></div>
-  <p class="signup-sub reveal d2">Reserve your place and shape what LunaLayer becomes. Early testers get free access and direct input on the features that matter most.</p>
+<form action="https://assets.mailerlite.com/jsonp/2281846/forms/185313833376548489/subscribe" method="post" target="_blank">
 
   <div class="form-card reveal d3">
-    <label class="flabel" for="em">Your Email Address</label>
-    <input class="finput" type="email" id="em" placeholder="your@email.com" autocomplete="email" />
+    <label class="flabel">Your Email Address</label>
 
-    <button class="btn-submit" onclick="submitML()">✦ &nbsp; Reserve My Spot</button>
+    <input 
+      class="finput" 
+      type="email" 
+      name="fields[email]" 
+      placeholder="your@email.com" 
+      required
+    />
+
+    <button class="btn-submit" type="submit">
+      ✦ &nbsp; Reserve My Spot
+    </button>
 
     <p class="fnote">No spam. No pressure. Just early access when it's ready.</p>
-
-    <div class="fsuccess" id="suc" style="display:none;">
-      ✦ &nbsp; You're on the list. We'll be in touch when beta opens.
-    </div>
-
     <p class="spots">Limited to 100 early testers</p>
   </div>
-</div>
 
-<script>
-function submitML() {
-  const email = document.getElementById("em").value;
+  <input type="hidden" name="ml-submit" value="1">
+  <input type="hidden" name="anticsrf" value="true">
 
-  if (!email) {
-    alert("Enter your email");
-    return;
-  }
-
-  const url = "https://assets.mailerlite.com/jsonp/2281846/forms/185313833376548489/subscribe";
-
-  const script = document.createElement("script");
-  script.src = url + "?fields[email]=" + encodeURIComponent(email) + "&ml-submit=1";
-
-  document.body.appendChild(script);
-
-  document.getElementById("suc").style.display = "block";
-}
-</script>
+</form>
 
   
 <!-- FOOTER -->

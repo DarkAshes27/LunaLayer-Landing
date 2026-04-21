@@ -418,29 +418,29 @@
 
 
 <!-- SIGNUP -->
-<form action="https://assets.mailerlite.com/jsonp/2281846/forms/185313833376548489/subscribe" method="post" target="_blank">
+<form id="ml-form" class="form-card reveal d3">
 
-  <div class="form-card reveal d3">
-    <label class="flabel">Your Email Address</label>
+  <label class="flabel">Your Email Address</label>
 
-    <input 
-      class="finput" 
-      type="email" 
-      name="fields[email]" 
-      placeholder="your@email.com" 
-      required
-    />
+  <input 
+    class="finput" 
+    type="email" 
+    id="emailInput"
+    placeholder="your@email.com" 
+    required
+  />
 
-    <button class="btn-submit" type="submit">
-      ✦ &nbsp; Reserve My Spot
-    </button>
+  <button class="btn-submit" type="submit">
+    ✦ &nbsp; Reserve My Spot
+  </button>
 
-    <p class="fnote">No spam. No pressure. Just early access when it's ready.</p>
-    <p class="spots">Limited to 100 early testers</p>
+  <p class="fnote">No spam. No pressure. Just early access when it's ready.</p>
+
+  <div class="fsuccess" id="successMsg" style="display:none;">
+    ✦ &nbsp; You're on the list. We'll be in touch when beta opens.
   </div>
 
-  <input type="hidden" name="ml-submit" value="1">
-  <input type="hidden" name="anticsrf" value="true">
+  <p class="spots">Limited to 100 early testers</p>
 
 </form>
 
@@ -493,6 +493,30 @@ function doSignup(){
 }
 document.getElementById('em').addEventListener('keydown',e=>{if(e.key==='Enter')doSignup();});
 </script>
+
+  <script>
+document.getElementById("ml-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("emailInput").value;
+
+  fetch("https://assets.mailerlite.com/jsonp/2281846/forms/185313833376548489/subscribe", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: "fields[email]=" + encodeURIComponent(email) + "&ml-submit=1&anticsrf=true"
+  })
+  .then(() => {
+    document.getElementById("successMsg").style.display = "block";
+    document.getElementById("emailInput").value = "";
+  })
+  .catch(() => {
+    alert("Something went wrong. Try again.");
+  });
+});
+</script>
+  
 
 </body>
 </html>

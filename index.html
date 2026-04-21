@@ -416,6 +416,7 @@
   </div>
 </div>
 
+
 <!-- SIGNUP -->
 <div class="wrap sec signup-center" id="signup">
   <div class="sec-label center reveal"><span class="ll"></span>Reserve Your Spot<span class="rl"></span></div>
@@ -426,13 +427,40 @@
   <div class="form-card reveal d3">
     <label class="flabel" for="em">Your Email Address</label>
     <input class="finput" type="email" id="em" placeholder="your@email.com" autocomplete="email" />
-    <button class="btn-submit" onclick="doSignup()">✦ &nbsp; Reserve My Spot</button>
+
+    <button class="btn-submit" onclick="submitML()">✦ &nbsp; Reserve My Spot</button>
+
     <p class="fnote">No spam. No pressure. Just early access when it's ready.</p>
-    <div class="fsuccess" id="suc">✦ &nbsp; You're on the list. We'll be in touch when beta opens.</div>
+
+    <div class="fsuccess" id="suc" style="display:none;">
+      ✦ &nbsp; You're on the list. We'll be in touch when beta opens.
+    </div>
+
     <p class="spots">Limited to 100 early testers</p>
   </div>
 </div>
 
+<script>
+function submitML() {
+  const email = document.getElementById("em").value;
+
+  if (!email) {
+    alert("Enter your email");
+    return;
+  }
+
+  const url = "https://assets.mailerlite.com/jsonp/2281846/forms/185313833376548489/subscribe";
+
+  const script = document.createElement("script");
+  script.src = url + "?fields[email]=" + encodeURIComponent(email) + "&ml-submit=1";
+
+  document.body.appendChild(script);
+
+  document.getElementById("suc").style.display = "block";
+}
+</script>
+
+  
 <!-- FOOTER -->
 <footer>
   <p>☽ &nbsp; <span class="g">LunaLayer</span> &nbsp;·&nbsp; RestlessTech &nbsp;·&nbsp; Made for Android planners</p>

@@ -9,6 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
+
+    @font-face {
+  font-family: 'MyLunaLayer';
+  src: url('MyLunaLayer.ttf') format('truetype');
+}
+    
     :root {
       --void:        #07060f;
       --midnight:    #0d0b1a;
@@ -25,7 +31,7 @@
       --text:        #f0ece6;
       --muted:       #8a8299;
       --border-orn:  rgba(180, 150, 90, 0.4);
-      --serif-display: 'Cinzel Decorative', serif;
+      --serif-display: 'MyLunaLayer', serif;
       --serif:         'Cinzel', serif;
       --body:          'IM Fell English', Georgia, serif;
       --ui:            'Raleway', sans-serif;
@@ -654,19 +660,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <svg class="hero-moon" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="mg" cx="35%" cy="35%" r="65%">
-        <stop offset="0%"   stop-color="#f5d98a"/>
-        <stop offset="50%"  stop-color="#e8a820"/>
-        <stop offset="100%" stop-color="#7a4a05"/>
-      </radialGradient>
-    </defs>
-    <path d="M62 50 C62 74 44 95 25 95 C12 95 2 86 2 72 C2 48 20 10 45 5 C34 16 27 32 27 50 C27 68 43 82 62 71 C62 64 62 57 62 50Z" fill="url(#mg)"/>
-    <circle cx="22" cy="46" r="3.5" fill="rgba(0,0,0,0.1)"/>
-    <circle cx="36" cy="68" r="2"   fill="rgba(0,0,0,0.08)"/>
-    <circle cx="16" cy="63" r="2.5" fill="rgba(0,0,0,0.09)"/>
-  </svg>
+  <img src="CrescentMoon.png" class="hero-moon" alt="Moon">
 
   <h1 class="hero-title">LunaLayer</h1>
   <p class="hero-tagline">Your floating calendar overlay for planners.</p>
@@ -990,16 +984,31 @@ const obs=new IntersectionObserver(e=>e.forEach(v=>{if(v.isIntersecting){v.targe
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 /* Signup */
-function doSignup(){
-  const inp=document.getElementById('em'), val=inp.value.trim();
-  if(!val||!val.includes('@')){ inp.style.borderColor='rgba(200,80,80,0.7)'; inp.focus(); setTimeout(()=>inp.style.borderColor='',2000); return; }
-  inp.style.display='none';
-  document.querySelector('.flabel').style.display='none';
-  document.querySelector('.btn-submit').style.display='none';
-  document.querySelector('.fnote').style.display='none';
-  document.getElementById('suc').style.display='block';
-}
-document.getElementById('em').addEventListener('keydown',e=>{if(e.key==='Enter')doSignup();});
+<form id="ml-form" class="form-card reveal d3">
+
+  <label class="flabel">Your Email Address</label>
+
+  <input 
+    class="finput" 
+    type="email" 
+    id="emailInput"
+    placeholder="your@email.com" 
+    required
+  />
+
+  <button class="btn-submit" type="submit">
+    ✦ &nbsp; Reserve My Spot
+  </button>
+
+  <p class="fnote">No spam. No pressure. Just early access when it's ready.</p>
+
+  <div class="fsuccess" id="successMsg" style="display:none;">
+    ✦ &nbsp; You're on the list. We'll be in touch when beta opens.
+  </div>
+
+  <p class="spots">Limited to 100 early testers</p>
+
+</form>
 </script>
 
 </body>

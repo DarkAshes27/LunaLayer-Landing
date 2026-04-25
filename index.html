@@ -9,6 +9,56 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
+
+    .video-showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 60px 20px;
+}
+
+.video-frame {
+  position: relative;
+  padding: 14px;
+  border-radius: 24px;
+  background: linear-gradient(
+    145deg,
+    rgba(28, 20, 45, 0.95),
+    rgba(12, 10, 20, 0.98)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow:
+    0 0 30px rgba(138, 92, 246, 0.15),
+    0 0 80px rgba(0, 0, 0, 0.45);
+  max-width: 960px;
+  width: 100%;
+}
+
+.video-frame::before {
+  content: "✦ LunaLayer Demo ✦";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f0b18;
+  color: #d4af37;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 4px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.video-frame iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 500px;
+  border: none;
+  border-radius: 18px;
+  display: block;
+}
+    
     @font-face {
       font-family: 'MyLunaLayer';
       src: url('MyLunaLayer.ttf') format('truetype');
@@ -399,7 +449,18 @@
   </div>
 </div>
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/KBqg1OKgmxo?si=GlUC1QlKauzRD_Sa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div class="video-showcase">
+  <div class="video-frame">
+    <iframe
+      src="https://www.youtube.com/embed/KBqg1OKgmxo?si=GlUC1QlKauzRD_Sa"
+      title="LunaLayer Demo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
 
 <!-- POWER USERS -->
 <div class="power-bg">
@@ -421,6 +482,8 @@
     </div>
   </div>
 </div>
+
+  
 
 <!-- SIGNUP -->
 <div class="wrap sec signup-center" id="signup">
